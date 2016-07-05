@@ -29,5 +29,11 @@
     <ClInclude Include="NativeVector.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="vector4f.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
