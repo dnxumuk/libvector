@@ -11,6 +11,13 @@ public:
 
     inline NativeVector operator+(float number);
     inline NativeVector operator+(const NativeVector &rvec);
+    inline NativeVector& operator+=(const NativeVector &rvec) {
+      x_ += rvec.x();
+      y_ += rvec.y();
+      z_ += rvec.z();
+      w_ += rvec.w();
+      return *this;
+    }
 
     inline float x() const;
     inline float y() const;
