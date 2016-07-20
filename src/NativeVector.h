@@ -8,7 +8,7 @@ public:
     NativeVector(float x, float y, float z, float w) :
       x_(x), y_(y), z_(z), w_(w) {};
     void Debug(const std::string &msg);
-
+    // +
     inline NativeVector operator+(float number);
     inline NativeVector operator+(const NativeVector &rvec);
     inline NativeVector& operator+=(const NativeVector &rvec) {
@@ -16,6 +16,16 @@ public:
       y_ += rvec.y();
       z_ += rvec.z();
       w_ += rvec.w();
+      return *this;
+    }
+    // -
+    inline NativeVector operator-(float number);
+    inline NativeVector operator-(const NativeVector &rvec);
+    inline NativeVector& operator-=(const NativeVector &rvec) {
+      x_ -= rvec.x();
+      y_ -= rvec.y();
+      z_ -= rvec.z();
+      w_ -= rvec.w();
       return *this;
     }
 
@@ -45,10 +55,19 @@ float NativeVector::w() const {
 }
 
 // Operators
+// + 
 NativeVector NativeVector::operator+(float number) {
   return NativeVector(number + x_, number + y_, number + z_, number + w_);
 }
 
 NativeVector NativeVector::operator+(const NativeVector &rvec) {
   return NativeVector(x_+rvec.x(), y_+rvec.y(), z_+rvec.z(), w_+rvec.w());
+}
+// -
+NativeVector NativeVector::operator-(float number) {
+  return NativeVector(number - x_, number - y_, number - z_, number - w_);
+}
+
+NativeVector NativeVector::operator-(const NativeVector &rvec) {
+  return NativeVector(x_ - rvec.x(), y_ - rvec.y(), z_ - rvec.z(), w_ - rvec.w());
 }

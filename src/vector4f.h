@@ -3,6 +3,8 @@
 
 class vector4f;
 vector4f operator+(const vector4f& lhs, const vector4f& rhs);
+vector4f operator*(const vector4f& lhs, const vector4f& rhs);
+vector4f operator-(const vector4f& lhs, const vector4f& rhs);
 
 class vector4f
 {
@@ -31,6 +33,14 @@ public:
     *this = *this + rvec;
     return *this;
   }
+  inline vector4f& operator-=(const __m128 &rvec) {
+    *this = *this - rvec;
+    return *this;
+  }
+  inline vector4f& operator*=(const __m128 &rvec) {
+    *this = *this * rvec;
+    return *this;
+  }
   // !!!!!!!!!!! To prevent release optimisation for
   // unused variables
   operator bool() const {
@@ -46,4 +56,8 @@ vector4f operator+(const vector4f& lhs, const vector4f& rhs) {
 
 vector4f operator-(const vector4f& lhs, const vector4f& rhs) {
   return _mm_sub_ps(lhs, rhs);
+}
+
+vector4f operator*(const vector4f& lhs, const vector4f& rhs) {
+  return _mm_mul_ps(lhs, rhs);
 }
