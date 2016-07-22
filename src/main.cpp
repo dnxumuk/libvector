@@ -17,7 +17,7 @@ int main()
   vec a(0., 0., 0.,0.);
   vec b(1., 2., 3.,4.);
   auto c = a + b;
-  testPlus(1'000'000'0);
+  testPlus(1'000'000);
   system("pause");
   return 0;
 }
@@ -29,15 +29,11 @@ void testPlus(size_t count) {
     std::vector<NativeVector> lop(count);
     std::vector<NativeVector> rop(count);
     InitializeVectorsAsRandom<float>(lop, rop);
-    
     NativeVector result;
-    /*for (size_t i = 0; i < count; ++i) {
-      lop[i] = NativeVector(_rnd(), _rnd(), _rnd(), _rnd());
-      rop[i] = NativeVector(_rnd(), _rnd(), _rnd(), _rnd());
-    }*/
     prf.StartFirst();
-    for (size_t i = 0; i < count; ++i) {
-      result += (lop[i] + rop[i]);
+    for (size_t times = 0; times < 100; ++times)
+      for (size_t i = 0; i < count; ++i) {
+        lop[i] += (lop[i] + rop[i]);
     }
     prf.StopFirst(); 
     std::cout << result.w();
@@ -47,17 +43,13 @@ void testPlus(size_t count) {
   {
     std::vector<vector4f> lop(count);
     std::vector<vector4f> rop(count);
+    InitializeVectorsAsRandom<float>(lop, rop);
     vector4f result;
-    for (size_t i = 0; i < count; ++i) {
-      lop[i] = vector4f(_rnd(), _rnd(), _rnd(), _rnd());
-      rop[i] = vector4f(_rnd(), _rnd(), _rnd(), _rnd());
-    }
     prf.StartSecond();
-    for (size_t i = 0; i < count; ++i) {
-      result += (lop[i] + rop[i]);
-    }
+    for (size_t times = 0; times < 100; ++times)
+      for (size_t i = 0; i < count; ++i) 
+        lop[i] += (lop[i] + rop[i]);
     prf.StopSecond();
-    std::cout << (result ? 1: 0);
   }
   prf.DisplayComparedResults();
 }

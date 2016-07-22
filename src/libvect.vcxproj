@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="NativeVector.h" />
     <ClInclude Include="Profiler.h" />
+    <ClInclude Include="simd_base.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="vector4f.h" />
   </ItemGroup>

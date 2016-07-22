@@ -47,10 +47,10 @@ void Profiler::DisplayComparedResults() {
   float ratio = time_first/time_second;
   std::cout << "Second result is ";
   if (ratio > 1.) {
-    float percent = (ratio - 1.) * 100;
+    double percent = (ratio - 1.) * 100;
     std::cout << std::fixed << std::setprecision(1) << percent << "% faster than first" << std::endl;
   } else if (ratio < 1.) {
-    float percent = (100. / ratio) - 100.;
+    double percent = (100. / ratio) - 100.;
     std::cout << std::fixed << std::setprecision(1) << percent << "% slower than first" << std::endl;
   } else if (ratio == 1.) 
     std::cout << "the same" << std::endl;
